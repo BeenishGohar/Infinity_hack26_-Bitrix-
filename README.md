@@ -1,28 +1,36 @@
 # NovaWorks Project Desk - AI Meeting to Project CRM
 
 ## Team
-- Team name: [name] | Members: [4 names and responsibilities] | Repo: [GitHub URL]
+- Team name: Bitrix
+- Members and responsibilities:
+  - Beenish Gohar: Frontend
+  - Faiza Nayyab: Backend
+  - Rutab Bukari: Database and AI prompting
+
+- Repo: https://github.com/BeenishGohar/Infinity_hack26_-Bitrix-
 
 ## What Works
 Login/logout (session based), admin transcript-to-projects via Groq AI, all-or-nothing save, project cards and detail,
 read-only team directory, manager and agent views filtered **on the server**, persistent MySQL storage.
 
 ## Stack
-Python Flask · vanilla HTML/CSS/JS · MySQL 8 (port 3306) · Groq (`llama-3.3-70b-versatile`) · Flask signed-cookie sessions, hashed passwords.
+Python Flask · vanilla HTML/CSS/JS · MySQL 8 (port 3306) · Groq (`openai/gpt-oss-120b`) · Flask signed-cookie sessions, hashed passwords.
 
 ## Run Locally
 ```sh
-git clone [YOUR_REPOSITORY_URL] && cd novaworks
-python -m venv venv && source venv/bin/activate      # Windows: venv\Scripts\activate
+git clone https://github.com/BeenishGohar/Infinity_hack26_-Bitrix-.git
+cd Infinity_hack26_-Bitrix-
+python -m venv .venv
+.venv\Scripts\activate                                # Mac/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env                                  # then fill in real values
+copy .env.example .env                                # Mac/Linux: cp .env.example .env, then fill in real values
 python seed.py                                        # creates DB + tables + 10 demo users (safe to re-run)
-python app.py                                         # open http://localhost:5000
+python app.py                                         # open http://127.0.0.1:5000
 ```
-MySQL must be running. Keep the `python app.py` terminal open.
+MySQL must be running on port 3306. A Groq API key is needed in `.env`. Keep the `python app.py` terminal open.
 
 ## Environment Variables (`.env`, backend only)
-`DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `GROQ_API_KEY`, `GROQ_MODEL`, `SECRET_KEY`
+`DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `GROQ_API_KEY`, `GROQ_MODEL` (`openai/gpt-oss-120b`), `SECRET_KEY`
 
 ## Demo Accounts (password `Demo123!` for all)
 admin@novaworks.example · ayesha@ · bilal@ · hina@ (managers) · ali@ · hamza@ · sara@ · usman@ · zain@ · maryam@ (agents, all `@novaworks.example`)
@@ -35,7 +43,7 @@ admin@novaworks.example · ayesha@ · bilal@ · hina@ (managers) · ali@ · hamz
 5. Reset generated data between tests (keeps users): `python seed.py reset`
 
 ## Deployment
-Local only. Demo video: [URL]
+Local only (local MySQL database). 
 
 ## Known Limitations
-Free Groq rate limits may apply. Re-running creation adds duplicate projects (use `python seed.py reset`). Project/task editing not implemented.
+Free Groq rate limits may apply. Re-running creation adds duplicate projects (use `python seed.py reset`). Project/task editing not implemented. Not deployed.
